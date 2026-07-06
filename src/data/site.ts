@@ -127,7 +127,7 @@ export const services = [
 export const gallery = [
   {
     label: "Terreno",
-    img: "/images/Santiago.jpg",
+    img: "/images/Santiago-gallery.avif",
   },
   {
     label: "Mantenimiento",
