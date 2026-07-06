@@ -1,0 +1,42 @@
+---
+import { gallery } from "../../data/site";
+---
+
+<section id="sectores" class="bg-ink py-12 md:py-16" aria-label="Áreas de trabajo">
+  <div class="px-3 md:px-4">
+    <ul class="grid grid-cols-2 gap-3 md:gap-4 md:grid-cols-5" role="list">
+      {gallery.map((item, i) => {
+        const isLastOdd = i === gallery.length - 1 && gallery.length % 2 !== 0;
+        return (
+          <li
+            class={[
+              "reveal relative group rounded-xl overflow-hidden",
+              "transition-transform duration-500 ease-out hover:z-10",
+              "hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.7)]",
+              "md:hover:scale-[1.05]",
+              isLastOdd
+                ? "col-span-2 md:col-span-1 aspect-[16/9] md:aspect-[3/4]"
+                : "aspect-[3/4]",
+            ].join(" ")}
+            data-delay={`${i * 50}ms`}
+          >
+            <img
+              src={item.img}
+              alt={`Ingeniería Millar — ${item.label}`}
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover grayscale brightness-90 transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:brightness-110 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" aria-hidden="true"></div>
+            <div class="absolute bottom-4 left-4 flex items-center gap-1.5">
+              <span class="text-copper-bright font-semibold text-sm">/</span>
+              <span class="text-white font-semibold text-sm uppercase tracking-wider">{item.label}</span>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
